@@ -7,6 +7,7 @@
   "AT:urban": "50",
   "AT:rural": "100",
   "AT:trunk": "100",
+  "AT:motorway": "130",
   "BE:urban": "50",
   "BE-VLG:rural": "70",
   "BE-WAL:rural": "90",
