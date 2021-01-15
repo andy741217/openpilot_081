@@ -198,21 +198,21 @@ class CarInterface(CarInterfaceBase):
     ret.evgearAvailable = True if 882 in fingerprint[0] else False
     ret.emsAvailable = True if 608 and 809 in fingerprint[0] else False
 
-    if True:
-      ret.sccBus = 2 if 1057 in fingerprint[2] and False else 0 if 1057 in fingerprint[0] else -1
+    if opParams().get('SccEnabled'):
+      ret.sccBus = 2 if 1057 in fingerprint[2] and opParams().get('SccHarnessPresent') else 0 if 1057 in fingerprint[0] else -1
     else:
       ret.sccBus = -1
 
     ret.radarOffCan = (ret.sccBus == -1)
     #ret.radarTimeStep = 0.1
 
-    ret.openpilotLongitudinalControl = True and not (ret.sccBus == 0)
+    ret.openpilotLongitudinalControl = opParams().get('LongControlEnabled') and not (ret.sccBus == 0)
 
     ret.safetyModel = car.CarParams.SafetyModel.hyundaiLegacy
 
     if ret.mdpsHarness:
       ret.safetyModel = car.CarParams.SafetyModel.hyundaiCommunity
-    if ret.radarOffCan or (ret.sccBus == 2) or True:
+    if ret.radarOffCan or (ret.sccBus == 2) or opParams().get('EnableOPwithCC'):
       ret.safetyModel = car.CarParams.SafetyModel.hyundaiCommunityNonscc
     if ret.mdpsHarness:
       ret.minSteerSpeed = 0.
@@ -230,9 +230,9 @@ class CarInterface(CarInterfaceBase):
 
     ret.enableCamera = True
 
-    ret.radarDisablePossible = True
+    ret.radarDisablePossible = opParams().get('RadarDisableEnabled')
 
-    ret.enableCruise = False and ret.sccBus == 0
+    ret.enableCruise = opParams().get('EnableOPwithCC') and ret.sccBus == 0
 
     if ret.radarDisablePossible:
       ret.openpilotLongitudinalControl = True
