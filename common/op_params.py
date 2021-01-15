@@ -113,7 +113,7 @@ class opParams:
                         'smart_speed_max_vego': Param(26.8, VT.number, 'Speed limit to ignore Smartspeed in m/s'),
                         'speed_offset': Param(0, VT.number, 'Speed limit offset in m/s', live=True)
                         'SccEnabled': Param(True, bool, 'Car has stock SCC'),
-                        'SccHarnessPresent': Param(True, bool, 'Car has SCC Harness( scc moved to bus 2)'),
+                        'SccHarnessPresent': Param(True, bool, 'Car has SCC Harness'),
                         'LongControlEnabled': Param(True, bool, 'only for NON SCC car, OP will send SCC message'),
                         'EnableOPwithCC': Param(False, bool, 'Turn off if OP should not depend on SCC to engage'),
                         'RadarDisableEnabled': Param(False, bool, 'Turn on for Stock Radar to disable'),
