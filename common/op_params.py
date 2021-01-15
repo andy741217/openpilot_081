@@ -111,10 +111,14 @@ class opParams:
                         'rsa_max_speed': Param(24.5, VT.number, 'Speed limit to ignore RSA in m/s'),
                         'smart_speed': Param(True, bool, 'Whether to use Smart Speed for drives above smart_speed_max_vego'),
                         'smart_speed_max_vego': Param(26.8, VT.number, 'Speed limit to ignore Smartspeed in m/s'),
-                        'speed_offset': Param(0, VT.number, 'Speed limit offset in m/s', live=True)}
-
-
-
+                        'speed_offset': Param(0, VT.number, 'Speed limit offset in m/s', live=True)
+                        'SccEnabled': Param(True, bool, 'Car has stock SCC'),
+                        'SccHarnessPresent': Param(True, bool, 'Car has SCC Harness( scc moved to bus 2)'),
+                        'LongControlEnabled': Param(True, bool, 'only for NON SCC car, OP will send SCC message'),
+                        'EnableOPwithCC': Param(False, bool, 'Turn off if OP should not depend on SCC to engage'),
+                        'RadarDisableEnabled': Param(False, bool, 'Turn on for Stock Radar to disable'),
+                       }
+                        
 
     self._params_file = '/data/op_params.json'
     self._backup_file = '/data/op_params_corrupt.json'
